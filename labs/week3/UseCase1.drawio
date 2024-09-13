@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0" version="24.7.13">
+  <diagram id="ACLksJ0EUOBm_t_Q7uOY" name="Page-1">
+    <mxGraphModel dx="786" dy="471" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AcFldXqqMrDg-WkGUwKR-19" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="450" y="300" width="220" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="AcFldXqqMrDg-WkGUwKR-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="AcFldXqqMrDg-WkGUwKR-10" target="AcFldXqqMrDg-WkGUwKR-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AcFldXqqMrDg-WkGUwKR-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="AcFldXqqMrDg-WkGUwKR-10" target="AcFldXqqMrDg-WkGUwKR-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AcFldXqqMrDg-WkGUwKR-10" value="Employment&lt;div&gt;Candidate&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+          <mxGeometry x="690" y="405" width="30" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="AcFldXqqMrDg-WkGUwKR-13" value="Enter number in feet" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="490" y="350" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="AcFldXqqMrDg-WkGUwKR-15" value="Specify job and salary" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="490" y="465" width="110" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="AcFldXqqMrDg-WkGUwKR-20" value="Unit Conversion Software" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="450" y="310" width="220" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
