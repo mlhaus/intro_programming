@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-# I used ChatGPT to help
-
 # display a welcome message
 print("The Test Scores program")
 print()
