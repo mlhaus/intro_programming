@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
         
-def calculate_future_value(monthly_investment, yearly_interest, years):
+def calculate_future_value(monthly_investment: float, yearly_interest: float, years: int) -> float:
     # convert yearly values to monthly values
     monthly_interest_rate = yearly_interest / 12 / 100
     months = years * 12
