@@ -5,12 +5,16 @@ This module contains functions for getting user input from the keyboard
 import datetime
 import math
 
-def get_float(prompt: str, min = -math.inf, max = math.inf) -> float:
+def get_choice():
+    pass
+
+def get_float(prompt: str, required = True, min = -math.inf, max = math.inf) -> float:
     """
     This function prompts the user for a decimal (float) number
     Inputs: prompt (required) - a text string asking the user a question,
         min - the lowest accepted value,
         max - the highest accepted value
+        required - a boolean determining if input is required
     Output: The value entered by the user
     """
     value = 0
@@ -19,6 +23,8 @@ def get_float(prompt: str, min = -math.inf, max = math.inf) -> float:
     while(True):
         try:
             print(prompt, end="")
+            # ternary operator - one line if-else statement
+            print(" (*)" if required else "", end="")
             if(minSet):
                 print(f" [min {min}", end="")
             if(maxSet):
@@ -28,7 +34,11 @@ def get_float(prompt: str, min = -math.inf, max = math.inf) -> float:
             print(": ", end="")
             value = float(input())
         except ValueError:
+            if(not required):
+                value = None
+                break
             print("Invalid float value")
+            continue
 
         if(value < min):
             print(f"Value too low")

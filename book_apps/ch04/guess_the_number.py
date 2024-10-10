@@ -1,26 +1,27 @@
 #!/usr/bin/env python3
 
 import random
+from random import randint
 
-LIMIT = 10
+LIMIT = 2 # fixed or constant variable
 
 def display_title():
     print("Guess the number!")
     print()
 
 def play_game():    
-    number = random.randint(1, LIMIT)
+    number = random.randint(1, LIMIT) # generates a random number between 1 and 10
     print(f"I'm thinking of a number from 1 to {LIMIT}\n")
     count = 1
 
     while (guess := int(input("Your guess: "))) != number:
         if guess < number:
             print("Too low.")
-            count += 1
         elif guess > number:
             print("Too high.")
-            count += 1
-    print(f"You guessed it in {count} tries.\n")
+        count += 1
+    print(f"You guessed it in {count} ", end="")
+    print("try." if count == 1 else "tries.")
      
 def main():
     display_title()
