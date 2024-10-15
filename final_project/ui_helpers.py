@@ -1,15 +1,16 @@
 '''
 The functions in this module will help us define User Interface appearance
 '''
-def show_program_title(title: str, width: int) -> None:
+
+CONSOLE_WIDTH = 100
+
+def show_program_title(title: str) -> None:
     """
     Displays the formatted program title
-    INPUTS:
-        title, A string containing the title of the program
-        width, An int with the screen width for display in characters
+    INPUTS: title, A string containing the title of the program
     OUTPUT: None
     """
-    pass
+    show_message(f'\n{"** " + title + " **":^{CONSOLE_WIDTH}}')
 
 def show_section_title(title: str) -> None:
     """
@@ -17,15 +18,17 @@ def show_section_title(title: str) -> None:
     INPUT: title, A string with title of the section
     OUTPUT: None
     """
-    pass
+    show_message(f'{"-- " + title + " --":^{CONSOLE_WIDTH}}')
 
-def show_message(message: str) -> None:
+def show_message(message: str, type = "") -> None:
     """
     Displays a message
-    INPUTS: message, A string with the text to display
+    INPUTS:
+        message, A string with the text to display
+        type, A string such as "error", "title", etc.
     OUTPUT: None
     """
-    pass
+    print("\n" + (type.upper() + ":" if(type != "") else "") + message)
 
 def press_enter_to_continue() -> None:
     """
@@ -33,7 +36,7 @@ def press_enter_to_continue() -> None:
     INPUT: None
     OUTPUT: None
     """
-    pass
+    input("Press enter to continue...")
 
 def show_error(message: str) -> None:
     """
@@ -41,7 +44,8 @@ def show_error(message: str) -> None:
     INPUTS: message, A string with the error message
     OUTPUT: None
     """
-    pass
+    show_message(message, "error")
+    press_enter_to_continue()
 
 def show_menu(menu_title: str, options: list) -> None:
     """
