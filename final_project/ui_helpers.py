@@ -45,7 +45,6 @@ def show_error(message: str) -> None:
     OUTPUT: None
     """
     show_message(message, "error")
-    press_enter_to_continue()
 
 def show_menu(menu_title: str, options: list) -> None:
     """
