@@ -21,6 +21,7 @@ def add(movie_list):
     print(f"{movie} was added.\n")
 
 def delete(movie_list):
+    list(movie_list)
     number = int(input("Number: "))
     if number < 1 or number > len(movie_list):
         print("Invalid movie number.\n")
@@ -28,14 +29,16 @@ def delete(movie_list):
         movie = movie_list.pop(number-1)
         print(f"{movie} was deleted.\n")
 
+def press_enter_to_continue():
+    input("\nPress enter to continue...")
+
 def main():
     movie_list = ["Monty Python and the Holy Grail",
                   "On the Waterfront",
                   "Cat on a Hot Tin Roof"]
-    
-    display_menu()
 
-    while True:        
+    while True:
+        display_menu()
         command = input("Command: ")
         if command.lower() == "list":
             list(movie_list)   
@@ -47,6 +50,7 @@ def main():
             break
         else:
             print("Not a valid command. Please try again.\n")
+        press_enter_to_continue()
 
     print("Bye!")
 
