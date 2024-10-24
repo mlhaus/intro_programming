@@ -1,6 +1,6 @@
 from final_project.ui_helpers import show_message, press_enter_to_continue
-from user_input import get_float, get_int, get_str, get_date
-from ui_helpers import show_program_title, show_error
+from user_input import get_choice
+from ui_helpers import show_program_title, show_error, show_section_title
 import employee_handlers as eh
 '''
 This is the main module for the Employee demo project
@@ -14,8 +14,10 @@ def main():
     """
     show_program_title("Employee Program")
     done = False
+    menu_options = ["Add an employee", "Get all employees", "Get single employee", "Update employee", "Delete Employee", "Quit"]
     while(not done):
-        choice = get_int("Choice", False, 1, 6)
+        choice = get_choice(menu_options)
+        show_section_title(menu_options[choice - 1])
         if(choice == 1):
             eh.add_employee()
         elif(choice == 2):

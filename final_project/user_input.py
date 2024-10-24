@@ -6,8 +6,16 @@ from datetime import date, datetime
 import math
 from ui_helpers import show_error
 
-def get_choice():
-    pass
+def get_choice(options: list) -> int:
+    """
+    This function prompts the user for a choice
+    Inputs: a list of string options
+    Output: The value entered by the user
+    """
+    for i, option in enumerate(options, start=1):
+        print(f"{i}) {option}")
+    print()
+    return get_int("Choice", True, 1, len(options))
 
 def get_float(prompt: str, required = True, min = -math.inf, max = math.inf) -> float:
     """
