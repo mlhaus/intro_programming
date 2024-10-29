@@ -1,3 +1,4 @@
+from final_project.ui_helpers import show_message
 from ui_helpers import show_section_title
 from user_input import get_str, get_date, get_int, get_bool, get_float
 from table import print_table
@@ -38,10 +39,15 @@ def get_all_employees():
     INPUTS: None
     OUTPUT: None
     """
-    header = ["First Name", "Last Name", "Date of Birth", "Number Dependents", "Extra Withholding"]
-    copy_employees = copy.deepcopy(employees)
-    copy_employees.insert(0, header)
-    print_table(copy_employees)
+    if(len(employees) > 0):
+        header = ["First Name", "Last Name", "Date of Birth", "Number Dependents", "Extra Withholding"]
+        # copy_employees = copy.deepcopy(employees)
+        # Source: https://stackoverflow.com/questions/20183069/how-to-sort-multidimensional-array-by-column
+        copy_employees = sorted(employees,key=lambda x: x[1]) # sort employees last name A-Z, add ", reverse=True" to reverse the order
+        copy_employees.insert(0, header)
+        print_table(copy_employees)
+    else:
+        show_message("There are no employees to show", "alert")
 
 
 def get_employee():
