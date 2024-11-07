@@ -73,7 +73,7 @@ class Table:
             horizontal: str = "-",
             corner: str = "+"
     ) -> None:
-        max_width = 100
+        max_width = 184
         ##################
         # Initialization #
         ##################

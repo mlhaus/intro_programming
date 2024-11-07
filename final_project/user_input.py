@@ -112,7 +112,7 @@ def get_str(prompt: str, required = True) -> str:
         # ternary operator - one line if-else statement
         print(" (*)" if required else "", end="")
         print(": ", end="")
-        value = input()
+        value = input().strip()
         if (value == "" and not required):
             value = None
             break
@@ -133,20 +133,21 @@ def get_date(prompt: str, required = True, min = datetime.min, max = datetime.ma
     Output: The value entered by the user
     """
     value = 0
-    minSet = min != date.min
-    maxSet = max != date.max
+    minSet = min != datetime.min
+    maxSet = max != datetime.max
     while (True):
         try:
             print(prompt, end="")
             # ternary operator - one line if-else statement
             print(" (*)" if required else "", end="")
             print(" [YYYY-MM-DD]", end="")
-            # if (minSet):
-            #     print(f" [min {min}", end="")
-            # if (maxSet):
-            #     print(f"- max {max}]", end="")
-            # if (minSet and not maxSet):
-            #     print("]", end="")
+            if (minSet):
+                # Source: https://stackoverflow.com/a/2158454/6629315
+                print(f" [min {min.strftime('%Y-%m-%d')}", end="")
+            if (maxSet):
+                print(f", max {max.strftime('%Y-%m-%d')}]", end="")
+            if (minSet and not maxSet):
+                print("]", end="")
             print(": ", end="")
             # Source: https://stackoverflow.com/a/5220024/6629315
             value = datetime.strptime(input(),'%Y-%m-%d')
@@ -168,3 +169,11 @@ def get_date(prompt: str, required = True, min = datetime.min, max = datetime.ma
 
 def get_bool(prompt) -> bool:
     pass
+
+if __name__ == "__main__":
+    get_date("Birthday")
+    get_date("Birthday", False)
+    get_date("Event date", True, datetime.now())
+    get_date("Birthday", True, datetime(1900, 1, 1))
+    get_date("Birthday", True, datetime(1900, 1, 1), datetime.now())
+    get_str("Name")

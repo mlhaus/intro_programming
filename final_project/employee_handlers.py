@@ -30,6 +30,9 @@ def get_employee_data() -> None:
     list.append(get_date("Date of Birth"))
     list.append(get_int("Number of Dependents"))
     list.append(get_float("Extra Withholding?"))
+    list.append(get_float("Cost?"))
+    list.append(get_int("Expected Attendance?"))
+    list.append(get_str("Free?"))
     employees.append(list)
     
 
@@ -40,7 +43,7 @@ def get_all_employees():
     OUTPUT: None
     """
     if(len(employees) > 0):
-        header = ["First Name", "Last Name", "Date of Birth", "Number Dependents", "Extra Withholding"]
+        header = ["First Name", "Last Name", "Date of Birth", "Number Dependents", "Extra Withholding", "Cost", "Attendance", "Free?"]
         # copy_employees = copy.deepcopy(employees)
         # Source: https://stackoverflow.com/questions/20183069/how-to-sort-multidimensional-array-by-column
         copy_employees = sorted(employees,key=lambda x: x[1]) # sort employees last name A-Z, add ", reverse=True" to reverse the order
