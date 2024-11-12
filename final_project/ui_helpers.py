@@ -1,3 +1,4 @@
+from user_input import get_choice
 '''
 The functions in this module will help us define User Interface appearance
 '''
@@ -46,7 +47,7 @@ def show_error(message: str) -> None:
     """
     show_message(message, "error")
 
-def show_menu(menu_title: str, options: list) -> None:
+def show_menu(menu_title: str, options: list) -> int:
     """
     Displays the menu title and then displays the menu options, one per line
     INPUTS:
@@ -54,7 +55,8 @@ def show_menu(menu_title: str, options: list) -> None:
         options, A list of strings with the options for the menu
     OUTPUT: None
     """
-    pass
+    show_section_title(menu_title)
+    return get_choice(options)
 
 def confirm_quit() -> bool:
     """ 
@@ -63,4 +65,5 @@ def confirm_quit() -> bool:
     INPUT: None
     RETURNS: boolean True if the user confirms the quit, and False otherwise
     """
+    # TODO: Implement this function by calling the user_input.get_bool function
     pass

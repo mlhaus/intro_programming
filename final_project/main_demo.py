@@ -1,5 +1,4 @@
-from ui_helpers import show_message, press_enter_to_continue
-from user_input import get_choice
+from ui_helpers import show_message, press_enter_to_continue, show_menu
 from ui_helpers import show_program_title, show_error, show_section_title
 import employee_handlers as eh
 '''
@@ -16,8 +15,10 @@ def main():
     done = False
     menu_options = ["Add an employee", "Get all employees", "Get single employee", "Update employee", "Delete Employee", "Quit"]
     while(not done):
-        choice = get_choice(menu_options)
-        show_section_title(menu_options[choice - 1])
+        choice = show_menu("Main Menu", menu_options)
+        # Display a section title for all but the last option
+        if(choice < len(menu_options)):
+            show_section_title(menu_options[choice - 1])
         if(choice == 1):
             eh.add_employee()
         elif(choice == 2):
@@ -29,7 +30,9 @@ def main():
         elif(choice == 5):
             eh.delete_employee()
         elif(choice == 6):
-            # To do: prompt the user to confirm that they want to quit
+            # TODO: prompt the user to confirm that they want to quit
+            # If the user chooses no, call a continue statement to restart the loop
+            # If the user chooses yes, call the break statement to end the loop
             break
         else:
             show_error("Invalid choice.")

@@ -4,7 +4,7 @@ This module contains functions for getting user input from the keyboard
 
 from datetime import date, datetime
 import math
-from ui_helpers import show_error
+import ui_helpers
 
 def get_choice(options: list) -> int:
     """
@@ -46,14 +46,14 @@ def get_float(prompt: str, required = True, min = -math.inf, max = math.inf) -> 
             if(not required):
                 value = None
                 break
-            show_error("Invalid float value")
+            ui_helpers.show_error("Invalid float value")
             continue
 
         if(value < min):
-            show_error("Value too low")
+            ui_helpers.show_error("Value too low")
             continue
         if (value > max):
-            show_error("Value too high")
+            ui_helpers.show_error("Value too high")
             continue
         break
     return value
@@ -87,14 +87,14 @@ def get_int(prompt: str, required = True, min = -math.inf, max = math.inf) -> in
             if (not required):
                 value = None
                 break
-            show_error("Invalid integer value")
+            ui_helpers.show_error("Invalid integer value")
             continue
 
         if (value < min):
-            show_error("Value too low")
+            ui_helpers.show_error("Value too low")
             continue
         if (value > max):
-            show_error("Value too high")
+            ui_helpers.show_error("Value too high")
             continue
         break
     return value
@@ -117,7 +117,7 @@ def get_str(prompt: str, required = True) -> str:
             value = None
             break
         elif (value == "" and required):
-            show_error("Value is required")
+            ui_helpers.show_error("Value is required")
             continue
         break
     return value
