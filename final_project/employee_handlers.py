@@ -40,7 +40,10 @@ def get_all_employees():
     """
     employees = get_data()
     if(len(employees) > 0):
-        print_table(employees)
+        header = ["ID","First Name", "Last Name", "Date of Birth", "Number Dependents", "Extra Withholding"]
+        copy_employees =  sorted(sorted(employees, key=lambda x: x[2]), key=lambda x: x[1])
+        copy_employees.insert(0, header)
+        print_table(copy_employees)
     else:
         show_message("There are no employees to show", "alert")
 
