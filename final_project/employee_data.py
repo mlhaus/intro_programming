@@ -41,6 +41,23 @@ def add_data(employee: list):
     write_file(FILE_NAME, NEEDED_FIELDS, employee_list)
     show_message("Employee added", "success")
 
+def get_employee_by_id(emp_id: int) -> list:
+    """
+    Input: An integer representing an employee id
+    Output: A list of data representing one (or more) employee, or None if the employee is not found
+    """
+    results = []
+    employees = get_employee_list()
+    for employee in employees:
+        current_id = employee[0]
+        if(current_id == emp_id):
+            results.append(employee)
+    return results
+
 
 if __name__ == "__main__":
-    print(get_data())
+    print(get_employee_by_id(1))
+    print(get_employee_by_id(2))
+    print(get_employee_by_id(3))
+    print(get_employee_by_id(4))
+    # print(get_data())
