@@ -1,6 +1,6 @@
 import csv
 import sys
-
+from datetime import datetime
 FILENAME = "movies.csv"
 
 def exit_program():
@@ -32,32 +32,49 @@ def write_movies(movies):
         exit_program()
 
 def list_movies(movies):
-    for i, movie in enumerate(movies, start=1):
-        print(f"{i}. {movie[0]} ({movie[1]})")
-    print()
+    if(len(movies) > 0):
+        for i, movie in enumerate(movies, start=1):
+            print(f"{i}. {movie[0]} ({movie[1]})")
+        print()
+    else:
+        print("There are no movies")
     
 def add_movie(movies):
     name = input("Name: ")
-    year = input("Year: ")
+    while(True):
+        try:
+            my_year = datetime.strptime(input("Year: "), "%Y")
+            # source: https://stackoverflow.com/a/1133190
+            year = my_year.year
+            break
+        except ValueError:
+            print("Invalid year")
+            continue
+
     movie = [name, year]
     movies.append(movie)
     write_movies(movies)
     print(f"{name} was added.\n")
 
 def delete_movie(movies):
-    while True:
-        try:
-            index = int(input("Number: "))
-        except ValueError:
-            print("Invalid integer. Please try again.")
-            continue
-        if index < 1 or index > len(movies):
-            print("There is no movie with that number. Please try again.")
-        else:
-            break
-    movie = movies.pop(index - 1)
-    write_movies(movies)
-    print(f"{movie[0]} was deleted.\n")
+    if(len(movies) > 0):
+        while True:
+            list_movies(movies)
+            try:
+                index = int(input("Number: "))
+            except ValueError:
+                print("Invalid integer. Please try again.")
+                continue
+            if index < 1 or index > len(movies):
+                print("There is no movie with that number. Please try again.")
+            else:
+                break
+        movie = movies.pop(index - 1)
+        deleted_movie_title = movie[0]
+        write_movies(movies)
+        print(f"{deleted_movie_title} was deleted.\n")
+    else:
+        print("There are no movies")
 
 def display_menu():
     print("The Movie List program")

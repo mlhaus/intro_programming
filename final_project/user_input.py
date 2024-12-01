@@ -30,17 +30,17 @@ def get_float(prompt: str, required = True, min = -math.inf, max = math.inf) -> 
     minSet = min != -math.inf
     maxSet = max != math.inf
     while(True):
+        print(prompt, end="")
+        # ternary operator - one line if-else statement
+        print(" (*)" if required else "", end="")
+        if (minSet):
+            print(f" [min {min}", end="")
+        if (maxSet):
+            print(f"- max {max}]", end="")
+        if (minSet and not maxSet):
+            print("]", end="")
+        print(": ", end="")
         try:
-            print(prompt, end="")
-            # ternary operator - one line if-else statement
-            print(" (*)" if required else "", end="")
-            if(minSet):
-                print(f" [min {min}", end="")
-            if(maxSet):
-                print(f"- max {max}]", end="")
-            if(minSet and not maxSet):
-                print("]", end="")
-            print(": ", end="")
             value = float(input())
         except ValueError:
             if(not required):
@@ -71,17 +71,17 @@ def get_int(prompt: str, required = True, min = -math.inf, max = math.inf) -> in
     minSet = min != -math.inf
     maxSet = max != math.inf
     while (True):
+        print(prompt, end="")
+        # ternary operator - one line if-else statement
+        print(" (*)" if required else "", end="")
+        if (minSet):
+            print(f" [min {min}", end="")
+        if (maxSet):
+            print(f"- max {max}]", end="")
+        if (minSet and not maxSet):
+            print("]", end="")
+        print(": ", end="")
         try:
-            print(prompt, end="")
-            # ternary operator - one line if-else statement
-            print(" (*)" if required else "", end="")
-            if (minSet):
-                print(f" [min {min}", end="")
-            if (maxSet):
-                print(f"- max {max}]", end="")
-            if (minSet and not maxSet):
-                print("]", end="")
-            print(": ", end="")
             value = int(input())
         except ValueError:
             if (not required):
@@ -136,33 +136,33 @@ def get_date(prompt: str, required = True, min = datetime.min, max = datetime.ma
     minSet = min != datetime.min
     maxSet = max != datetime.max
     while (True):
+        print(prompt, end="")
+        # ternary operator - one line if-else statement
+        print(" (*)" if required else "", end="")
+        print(" [YYYY-MM-DD]", end="")
+        if (minSet):
+            # Source: https://stackoverflow.com/a/2158454/6629315
+            print(f" [min {min.strftime('%Y-%m-%d')}", end="")
+        if (maxSet):
+            print(f", max {max.strftime('%Y-%m-%d')}]", end="")
+        if (minSet and not maxSet):
+            print("]", end="")
+        print(": ", end="")
         try:
-            print(prompt, end="")
-            # ternary operator - one line if-else statement
-            print(" (*)" if required else "", end="")
-            print(" [YYYY-MM-DD]", end="")
-            if (minSet):
-                # Source: https://stackoverflow.com/a/2158454/6629315
-                print(f" [min {min.strftime('%Y-%m-%d')}", end="")
-            if (maxSet):
-                print(f", max {max.strftime('%Y-%m-%d')}]", end="")
-            if (minSet and not maxSet):
-                print("]", end="")
-            print(": ", end="")
             # Source: https://stackoverflow.com/a/5220024/6629315
             value = datetime.strptime(input(),'%Y-%m-%d')
         except ValueError:
             if (not required):
                 value = None
                 break
-            show_error("Invalid date value")
+            ui_helpers.show_error("Invalid date value")
             continue
 
         if (value < min):
-            show_error("Value too low")
+            ui_helpers.show_error("Value too low")
             continue
         if (value > max):
-            show_error("Value too high")
+            ui_helpers.show_error("Value too high")
             continue
         break
     return value
@@ -171,9 +171,11 @@ def get_bool(prompt) -> bool:
     pass
 
 if __name__ == "__main__":
-    get_date("Birthday")
-    get_date("Birthday", False)
-    get_date("Event date", True, datetime.now())
-    get_date("Birthday", True, datetime(1900, 1, 1))
-    get_date("Birthday", True, datetime(1900, 1, 1), datetime.now())
-    get_str("Name")
+    get_float("Extra withholding", True, 0)
+    get_int("Number of dependents", True, 0, 10)
+    # get_date("Birthday")
+    # get_date("Birthday", False)
+    # get_date("Event date", True, datetime.now())
+    # get_date("Birthday", True, datetime(1900, 1, 1))
+    # get_date("Birthday", True, datetime(1900, 1, 1), datetime.now())
+    # get_str("Name")
