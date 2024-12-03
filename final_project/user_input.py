@@ -167,12 +167,31 @@ def get_date(prompt: str, required = True, min = datetime.min, max = datetime.ma
         break
     return value
 
-def get_bool(prompt) -> bool:
-    pass
+def get_bool(prompt, required = True) -> bool:
+    while (True):
+        print(prompt + " [Yes or No]", end="")
+        # ternary operator - one line if-else statement
+        print(" (*)" if required else "", end="")
+        print(": ", end="")
+        value = input().strip().lower()
+        if (value == "" and not required):
+            return None
+        elif (value == "" and required):
+            ui_helpers.show_error("Value is required")
+            continue
+        elif (value in ["yes","y"]):
+            return True
+        elif (value in ["no", "n"]):
+            return False
+        else:
+            ui_helpers.show_error("Invalid value")
+            continue
 
 if __name__ == "__main__":
-    get_float("Extra withholding", True, 0)
-    get_int("Number of dependents", True, 0, 10)
+    print(get_bool("Do you like pizza?"))
+    print(get_bool("Do you like pizza?", False))
+    # get_float("Extra withholding", True, 0)
+    # get_int("Number of dependents", True, 0, 10)
     # get_date("Birthday")
     # get_date("Birthday", False)
     # get_date("Event date", True, datetime.now())

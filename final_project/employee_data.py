@@ -54,6 +54,21 @@ def get_employee_by_id(emp_id: int) -> list:
             results.append(employee)
     return results
 
+def update_data(updated_employee: list):
+    employee_list = get_employee_list()
+    for i in range(len(employee_list)):
+        if(employee_list[i][0] == updated_employee[0]):
+            employee_list[i] = updated_employee
+            break
+    write_file(FILE_NAME, NEEDED_FIELDS, employee_list)
+    show_message("Employee updated", "success")
+
+def delete_data(employee_to_delete: list):
+    employee_list = get_employee_list()
+    employee_list.remove(employee_to_delete)
+    write_file(FILE_NAME, NEEDED_FIELDS, employee_list)
+    show_message("Employee deleted", "success")
+
 
 if __name__ == "__main__":
     print(get_employee_by_id(1))
